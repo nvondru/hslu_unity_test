@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3900348007474831649}
-  travelSpeed: 50
+  travelSpeed: 35
   lifespan: 2
   whatShouldHit:
     serializedVersion: 2

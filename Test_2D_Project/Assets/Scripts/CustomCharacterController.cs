@@ -17,11 +17,16 @@ public class CustomCharacterController : MonoBehaviour
     private float checkRadius;
     [SerializeField]
     private LayerMask whatIsGround;
+    [SerializeField]
+    private float freezeMultiplikator = 0.1f;
+
 
     private int jumpCount = 0;  
     private bool spaceTriggered = false;
 
     private Rigidbody2D rb;
+
+
 
 
     // Start is called before the first frame update
@@ -37,8 +42,12 @@ public class CustomCharacterController : MonoBehaviour
         {
             spaceTriggered = true;
         }
-
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+
+        if (Input.GetButton("Fire1"))
+        {
+            rb.velocity *= freezeMultiplikator;
+        }
     }
 
     private void FixedUpdate()

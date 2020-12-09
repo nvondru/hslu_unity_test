@@ -14,17 +14,10 @@ public class WeaponScript : MonoBehaviour
     private float chargeUpTimeMax = 2f;
     [SerializeField]
     private float chargeUpMultiplier = 5f;
-    [SerializeField]
-    private Image chargeUpBar;
 
     private float chargeUpTimeStart;
     private float chargeUpTimeCurrent;
     private bool canShoot = false;
-
-    private void Start()
-    {
-        chargeUpBar.fillAmount = 0;
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,11 +31,6 @@ public class WeaponScript : MonoBehaviour
         {            
             Shoot();
         }
-        if (Input.GetButton("Fire1") && canShoot)
-        {
-            chargeUpBar.fillAmount = (Time.time - chargeUpTimeStart) / chargeUpTimeMax;
-        }
-
     }
 
     private void Shoot()
@@ -51,6 +39,5 @@ public class WeaponScript : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.transform.localScale *= ((chargeUpTimeCurrent * chargeUpMultiplier) + 1);
         canShoot = false;
-        chargeUpBar.fillAmount = 0;
     }
 }
